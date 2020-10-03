@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+        <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+        <title>My test page</title>
+    </head>   
+    <body>
+        <h1>Mozilla is cool</h1>
+        
+        <img src="images/quack.png" alt="My test image"/>
+        
+        <p>At Mozilla, we're a global community of:</p>
+        
+        <ul>
+            <li>technologists</li>
+            <li>thinkers</li>
+            <li>builders</li>
+        </ul>
+        
+        <p> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis tellus eros, ac luctus nisi finibus non. Sed feugiat pulvinar fringilla. Duis at lectus non sapien iaculis hendrerit ac tincidunt magna. Nulla quis tortor turpis. Integer pulvinar massa eget eros iaculis, non consequat nisl malesuada. Donec lacus ex, sagittis vitae blandit ut, vehicula a tortor. Proin elementum eu ante a ullamcorper.  
+        </p>
+        
+        <p>
+            Lorem ipsum dolor sit amet, <a href="https://www.mozilla.org/en-US/about/manifesto/">consectetur adipiscing</a> elit. Donec lobortis tellus eros, ac luc
+        </p>
+        
+        <button>Change user</button>
+        <script>
+            const myImg = document.querySelector('img');
+            let myButton = document.querySelector('button');
+            let myHeading = document.querySelector('h1');
+            
+            function setUserName(){
+                let myName = prompt("Enter your name: ");
+                if(!myName || myName.trim().length === 0){
+                    setUserName();
+                }else{
+                    localStorage.setItem('name', myName);
+                    myHeading.textContent = 'Mozilla is cool, ' + myName;               
+                }
+            }
+            
+            if(!localStorage.getItem('name')){
+                setUserName();
+            }else{
+                let storedName = localStorage.getItem('name');
+                myHeading.textContent = 'Mozilla is cool, ' + storedName;
+            }
+            
+            myButton.onclick = function(){
+                setUserName();
+            }
+        </script>
+    </body>
+</html>
